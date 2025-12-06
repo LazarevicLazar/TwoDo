@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TwoDo - Together, Better</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+      button {
+        -webkit-user-select: none;
+        user-select: none;
+      }
+      .fade-in {
+        animation: fadeIn 0.3s ease-in;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="overflow-hidden">
+    <div id="root"></div>
+
+    <!-- React and Babel -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Firebase SDK v9 Compat -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyDZG9Y5H6ZsjVLzINJTJNmbpeaLVNWB3FQ",
+        authDomain: "twodo-c8b88.firebaseapp.com",
+        projectId: "twodo-c8b88",
+        storageBucket: "twodo-c8b88.firebasestorage.app",
+        messagingSenderId: "605172469828",
+        appId: "1:605172469828:web:7ceebf4546fe3aa11e6c11",
+        measurementId: "G-ZFZGNVKR0K",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+      const db = firebase.firestore();
+    </script>
+
+    <!-- Icons (must load first) -->
+    <script type="text/babel" src="components/icons.js"></script>
+
+    <!-- UI Components -->
+    <script type="text/babel" src="components/titlebar.js"></script>
+    <script type="text/babel" src="components/avatar-display.js"></script>
+    <script type="text/babel" src="components/avatar-picker.js"></script>
+
+    <!-- Firebase Operations -->
+    <script type="text/babel" src="components/firebase-operations.js"></script>
+
+    <!-- Feature Components -->
+    <script type="text/babel" src="components/today.js"></script>
+    <script type="text/babel" src="components/habits.js"></script>
+    <script type="text/babel" src="components/goals.js"></script>
+    <script type="text/babel" src="components/calendar.js"></script>
+    <script type="text/babel" src="components/chat.js"></script>
+    <script type="text/babel" src="components/stats.js"></script>
+
+    <!-- Main App -->
+    <script type="text/babel" src="app-main.js"></script>
+  </body>
+</html>

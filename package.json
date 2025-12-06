@@ -1,0 +1,56 @@
+{
+  "name": "twodo-desktop",
+  "version": "1.0.0",
+  "description": "TwoDo - Shared Accountability Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-mac": "electron-builder --mac",
+    "build-win": "electron-builder --win",
+    "build-linux": "electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.twodo.app",
+    "productName": "TwoDo",
+    "mac": {
+      "category": "public.app-category.productivity",
+      "icon": "assets/icon.icns"
+    },
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "linux": {
+      "icon": "assets/icon.png",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "files": [
+      "main.js",
+      "app-main.js",
+      "renderer.html",
+      "firebase-config.js",
+      "components/**/*",
+      "assets/**/*"
+    ]
+  },
+  "keywords": [
+    "productivity",
+    "tasks",
+    "accountability"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "firebase": "^12.6.0"
+  }
+}
