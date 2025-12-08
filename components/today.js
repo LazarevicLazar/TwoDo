@@ -59,7 +59,7 @@ const TodayTab = ({
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-            <span className="text-2xl">{currentUserData.avatar}</span>
+            <AvatarDisplay avatar={currentUserData.avatar} size="md" />
             My Tasks
           </h2>
           <button
@@ -289,7 +289,7 @@ const TodayTab = ({
       {partnerData && (
         <div>
           <h2 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
-            <span className="text-2xl">{partnerData.avatar}</span>
+            <AvatarDisplay avatar={partnerData.avatar} size="md" />
             {partnerData.name}'s Tasks
           </h2>
           <div className="space-y-3">

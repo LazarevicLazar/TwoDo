@@ -150,7 +150,7 @@ const GoalsTab = ({
                     </div>
                   )}
                 </div>
-                <span className="text-xl">{ownerData?.avatar}</span>
+                <AvatarDisplay avatar={ownerData?.avatar} size="md" />
               </div>
 
               <div className="space-y-2">

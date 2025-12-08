@@ -150,24 +150,31 @@ const TwoDoApp = () => {
 
   const loadUserData = async (userId) => {
     try {
-      const userDoc = await db.collection("users").doc(userId).get();
-      if (userDoc.exists) {
-        const userData = { id: userDoc.id, ...userDoc.data() };
-        setCurrentUserData(userData);
+      // Set up real-time listener for current user
+      const userUnsub = db
+        .collection("users")
+        .doc(userId)
+        .onSnapshot(async (doc) => {
+          if (doc.exists) {
+            const userData = { id: doc.id, ...doc.data() };
+            setCurrentUserData(userData);
 
-        if (userData.partnerId) {
-          const partnerDoc = await db
-            .collection("users")
-            .doc(userData.partnerId)
-            .get();
-          if (partnerDoc.exists) {
-            setPartnerData({ id: partnerDoc.id, ...partnerDoc.data() });
-            setupPartnerListeners(userData.partnerId);
+            // If partner exists, fetch/listen to partner data
+            if (userData.partnerId) {
+              const partnerDoc = await db
+                .collection("users")
+                .doc(userData.partnerId)
+                .get();
+              if (partnerDoc.exists) {
+                setPartnerData({ id: partnerDoc.id, ...partnerDoc.data() });
+                setupPartnerListeners(userData.partnerId);
+              }
+            }
           }
-        }
+        });
 
-        setupUserListeners(userId);
-      }
+      unsubscribeRef.current.push(userUnsub);
+      setupUserListeners(userId);
     } catch (error) {
       console.error("Error loading user data:", error);
     }
@@ -630,6 +637,7 @@ const TwoDoApp = () => {
     sendMessage: handleSendMessage,
     setShowSettings,
     Icon,
+    AvatarDisplay,
   };
 
   return (
@@ -647,9 +655,9 @@ const TwoDoApp = () => {
               </div>
               {partnerData && (
                 <div className="flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-blue-100 to-pink-100 rounded-full">
-                  <span className="text-sm">{currentUserData.avatar}</span>
+                  <AvatarDisplay avatar={currentUserData.avatar} size="sm" />
                   <Icon name="Heart" className="w-3 h-3 text-pink-500" />
-                  <span className="text-sm">{partnerData.avatar}</span>
+                  <AvatarDisplay avatar={partnerData.avatar} size="sm" />
                 </div>
               )}
             </div>

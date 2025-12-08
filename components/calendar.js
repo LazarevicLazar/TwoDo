@@ -32,7 +32,7 @@ const CalendarTab = ({
       <div className="grid md:grid-cols-2 gap-6">
         <div>
           <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <span className="text-xl">{currentUserData.avatar}</span>
+            <AvatarDisplay avatar={currentUserData.avatar} size="md" />
             My Schedule
           </h3>
           <div className="space-y-3">
@@ -101,7 +101,7 @@ const CalendarTab = ({
         {partnerData && (
           <div>
             <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <span className="text-xl">{partnerData.avatar}</span>
+              <AvatarDisplay avatar={partnerData.avatar} size="md" />
               {partnerData.name}'s Schedule
             </h3>
             <div className="space-y-3">

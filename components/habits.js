@@ -90,7 +90,7 @@ const HabitsTab = ({
       <div className="grid md:grid-cols-2 gap-4 max-h-[calc(100vh-24rem)] overflow-y-auto">
         <div>
           <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2 sticky top-0 bg-gradient-to-br from-blue-50 via-pink-50 to-purple-50 py-2">
-            <span className="text-xl">{currentUserData.avatar}</span>
+            <AvatarDisplay avatar={currentUserData.avatar} size="md" />
             My Habits
           </h3>
           <div className="space-y-3">
@@ -198,7 +198,7 @@ const HabitsTab = ({
         {partnerData && (
           <div>
             <h3 className="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2 sticky top-0 bg-gradient-to-br from-blue-50 via-pink-50 to-purple-50 py-2">
-              <span className="text-xl">{partnerData.avatar}</span>
+              <AvatarDisplay avatar={partnerData.avatar} size="md" />
               {partnerData.name}'s Habits
             </h3>
             <div className="space-y-3">

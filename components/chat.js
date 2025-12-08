@@ -49,7 +49,7 @@ const ChatTab = ({
           <span className="text-sm font-medium text-gray-700">
             Chatting with {partnerData.name}
           </span>
-          <span className="text-xl">{partnerData.avatar}</span>
+          <AvatarDisplay avatar={partnerData.avatar} size="md" />
         </div>
       </div>
 
@@ -78,7 +78,7 @@ const ChatTab = ({
                     isMine ? "flex-row-reverse" : "flex-row"
                   }`}
                 >
-                  <span className="text-2xl">{sender.avatar}</span>
+                  <AvatarDisplay avatar={sender.avatar} size="md" />
                   <div
                     className={`flex-1 max-w-md ${
                       isMine ? "text-right" : "text-left"
@@ -95,12 +95,10 @@ const ChatTab = ({
                     </div>
                     <div className="text-xs text-gray-500 mt-1">
                       {msg.timestamp?.toDate
-                        ? msg.timestamp
-                            .toDate()
-                            .toLocaleTimeString([], {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                            })
+                        ? msg.timestamp.toDate().toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })
                         : "Just now"}
                     </div>
                   </div>
