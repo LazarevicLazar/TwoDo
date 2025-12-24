@@ -94,7 +94,7 @@ const ChatTab = ({
                       <p className="text-sm">{msg.text}</p>
                     </div>
                     <div className="text-xs text-gray-500 mt-1">
-                      {msg.timestamp?.toDate
+                      {msg.timestamp?.toDate?.()
                         ? msg.timestamp.toDate().toLocaleTimeString([], {
                             hour: "2-digit",
                             minute: "2-digit",

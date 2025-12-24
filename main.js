@@ -15,8 +15,8 @@ function createWindow() {
       contextIsolation: false,
       enableRemoteModule: true,
     },
-    icon: path.join(__dirname, "assets/icon.png"),
-    frame: false, // Frameless window
+    icon: path.join(__dirname, "assets/icon2.png"),
+    frame: true,
     transparent: false,
     show: false,
   });
@@ -27,9 +27,6 @@ function createWindow() {
   mainWindow.once("ready-to-show", () => {
     mainWindow.show();
   });
-
-  // Open DevTools in development
-  mainWindow.webContents.openDevTools();
 
   mainWindow.on("closed", () => {
     mainWindow = null;
